@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    background-color: #06080c;
+    color: #f8f8f8;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/60 backdrop-blur-xl border border-border/60 rounded-lg;
+  }
+  .glass-strong {
+    @apply bg-card/80 backdrop-blur-2xl border border-border/80 rounded-lg;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+      bg-card/60 backdrop-blur-xl border border-border/60
+      text-sm font-medium text-text
+      transition-all duration-300 ease-smooth
+      hover:border-primary/40 hover:bg-primary/5
+      active:scale-[0.98]
+      will-change-transform;
+  }
+  .btn-primary {
+    @apply btn border-primary/40 bg-primary/10 text-primary hover:bg-primary/20;
+  }
+  .btn-ghost {
+    @apply btn border-transparent bg-transparent hover:bg-card/40;
+  }
+  .card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/60 rounded-lg p-lg;
+  }
+  .label-mono {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-text-secondary;
+  }
+}
+
+/* Hardware-accelerated scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #252c35;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3dd8ff80;
+}
+
+/* GPU layer promotion for animated elements */
+.gpu {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
